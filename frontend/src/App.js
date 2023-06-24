@@ -9,7 +9,7 @@ import { Homepage } from "./Homepage/Homepage";
 function App() {
   return (
     <Routes>
-      <Route path="" element={<Navbar />}>
+      <Route path="/" element={<Navbar />}>
         <Route path="" element={<Homepage />} />
         <Route path="random-biasness" element={<RandomBiasness />} />
         <Route path="math-expression" element={<MathExpression />} />
