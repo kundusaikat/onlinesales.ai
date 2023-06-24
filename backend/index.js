@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const { RandomBiasnessRoute } = require("./routes/random-biasness");
+const { MathExpressionRoute } = require("./routes/math-expression");
 dotenv.config();
 
 const app = express();
@@ -15,6 +16,7 @@ app.get("/", (req, res) =>
 );
 
 app.use("/random-biasness", RandomBiasnessRoute);
+app.use("/math-expression", MathExpressionRoute);
 
 const { PORT } = process.env;
 

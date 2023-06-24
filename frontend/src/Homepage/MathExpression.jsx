@@ -1,6 +1,39 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import { FiAlertTriangle } from "react-icons/fi";
+import { v4 as uuid } from "uuid";
 
 export const MathExpression = () => {
+  const [text, setText] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showData, setShowData] = useState([]);
+  const handleSubmit = async () => {
+    try {
+      setLoading(true);
+      const array = text.trim().split("\n");
+      if (array[array.length - 1] === "end") {
+        array.pop();
+      }
+      console.log(array, "array");
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_DOMAIN}/math-expression`,
+        {
+          inputData: array,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(data);
+      setLoading(false);
+      setShowData(data.results);
+    } catch (err) {
+      setLoading(false);
+      console.log(err);
+    }
+  };
   return (
     <div>
       <p className="font-bold text-2xl text-center">Mathematical Expression</p>
@@ -51,6 +84,34 @@ export const MathExpression = () => {
       <p className="pl-10">{`- 5 / (7 - 5) => 2.5`}</p>
       <p className="pl-10">{`- sqrt(5^2 - 4^2) => 3`}</p>
       <p className="pl-10">{`- sqrt(-3^2 - 4^2) = 5i`}</p>
+
+      <label>Enter the expression</label>
+      <div className="text-red-500">
+        <FiAlertTriangle />
+        <p>Write each expression in one single line.</p>
+        <p>Put an end word at the last.</p>
+      </div>
+      <br />
+      <textarea
+        className="border border-black w-full max-w-md h-[20vh] ml-5"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      ></textarea>
+      <button
+        onClick={handleSubmit}
+        className={`bg-green-500 ml-5 text-white px-4 py-2 rounded w-5/12 max-w-sm ${
+          loading ? "cursor-wait" : "cursor-pointer"
+        }`}
+      >
+        Submit
+      </button>
+
+      {showData.map((el) => (
+        <p key={uuid()}>{el}</p>
+      ))}
+
+
+        <a href=""></a>
     </div>
   );
 };
