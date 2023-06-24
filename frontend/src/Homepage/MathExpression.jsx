@@ -90,6 +90,7 @@ export const MathExpression = () => {
         <FiAlertTriangle />
         <p>Write each expression in one single line.</p>
         <p>Put an end word at the last.</p>
+        <p>This method will give error to the 51th expression</p>
       </div>
       <br />
       <textarea
@@ -110,8 +111,13 @@ export const MathExpression = () => {
         <p key={uuid()}>{el}</p>
       ))}
 
-
-        <a href=""></a>
+      <a
+        target="_blank"
+        rel="noreferrer"
+        href="https://github.com/kundusaikat/onlinesales.ai/blob/master/backend/routes/math-expression.js"
+      >
+        Github code
+      </a>
     </div>
   );
 };
