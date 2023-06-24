@@ -106,18 +106,20 @@ export const MathExpression = () => {
       >
         Submit
       </button>
+      <a
+        target="_blank"
+        rel="noreferrer"
+        className="underline text-blue-800"
+        href="https://github.com/kundusaikat/onlinesales.ai/blob/master/backend/routes/math-expression.js"
+      >
+        Github code
+      </a>
 
       {showData.map((el) => (
         <p key={uuid()}>{el}</p>
       ))}
 
-      <a
-        target="_blank"
-        rel="noreferrer"
-        href="https://github.com/kundusaikat/onlinesales.ai/blob/master/backend/routes/math-expression.js"
-      >
-        Github code
-      </a>
+      
     </div>
   );
 };
