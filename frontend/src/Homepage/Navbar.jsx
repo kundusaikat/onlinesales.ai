@@ -25,9 +25,7 @@ export const Navbar = () => {
     <div>
       <div className="sticky top-0 left-0 bg-blue-800 p-2 text-white flex justify-between">
         <Link to="/" className="m-auto md:m-0">
-        <p className="font-serif text-2xl font-bold  ">
-          OnlineSales.ai
-        </p>
+          <p className="font-serif text-2xl font-bold  ">OnlineSales.ai</p>
         </Link>
         <div className="hidden md:flex gap-2 justify-center items-center">
           {HomeRouteList.map((el) => (
@@ -37,6 +35,9 @@ export const Navbar = () => {
               </div>
             </Link>
           ))}
+          <a href="https://saikatkundu.online" target="_blank" rel="noreferrer">
+            <p>Portfolio</p>
+          </a>
         </div>
 
         <div
@@ -56,6 +57,9 @@ export const Navbar = () => {
               </div>
             </Link>
           ))}
+          <a href="https://saikatkundu.online" rel="noreferrer" target="_blank">
+            <p>Portfolio</p>
+          </a>
 
           <div
             className="absolute top-5 right-5 cursor-pointer"
